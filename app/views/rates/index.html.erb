@@ -23,4 +23,6 @@
 
 <%= render 'form', rate: @rate %>
 
-<%= @error if @error %>
+<% @rate.errors.full_messages.each do |message| %>
+  <h5><%= message %></h5>
+<% end %>
