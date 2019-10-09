@@ -1,0 +1,26 @@
+<h1>Rates</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Currency 1</th>
+      <th>Currency 2</th>
+      <th>Rate</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @rates.each do |rate| %>
+      <tr>
+        <td><%= rate.currency_1 %></td>
+        <td><%= rate.currency_2 %></td>
+        <td><%= rate.rate %></td>
+        <td><%= link_to 'Remove', { action: :destroy, id: rate.id }, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= render 'form', rate: @rate %>
+
+<%= @error if @error %>

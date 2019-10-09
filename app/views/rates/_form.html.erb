@@ -1,0 +1,15 @@
+<%= form_with(model: rate, local: true) do |form| %>
+  <div class="field">
+    <%= form.label :currency_1 %>
+    <%= form.text_field :currency_1,  autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :currency_2 %>
+    <%= form.text_field :currency_2 %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
