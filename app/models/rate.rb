@@ -23,7 +23,7 @@ class Rate < ApplicationRecord
 
   # API Call to get the current rate for the pair
   def get_current_rate
-      response = HTTParty.get("http://data.fixer.io/api/latest?access_key=#{Rails.application.credentials.dig(:fixer)[:access_key]}&symbols=#{self.currency_2}")
+      response = HTTParty.get("http://data.fixer.io/api/latest?access_key=#{Rails.application.credentials.dig(:fixer)[:access_key]}&symbols=#{self.currency_2},#{self.currency_1}")
 
       parsed_response = response.parsed_response
 
@@ -31,8 +31,14 @@ class Rate < ApplicationRecord
           errors.add(:invalid, "Currency Code Provided") if parsed_response["error"]["code"] == 202
       end
 
+      # As we cannot change the base, we have to get the two symbols agaisnt the base of EURO and divide them by each other. Because of this, we still receive success, even if one of them does not work, so we must check the length. If the length is 1, it was unsuccessful, if it is 2, it was successful
       if parsed_response["success"] == true
-        self.rate = response.parsed_response["rates"][self.currency_2] 
+        case parsed_response["rates"].length
+        when 1
+            errors.add(:invalid, "Currency Code Provided")
+        when 2  
+            self.rate = '%.4f' % (parsed_response["rates"][self.currency_2] / parsed_response["rates"][self.currency_1])
+        end
       end
   end
 
