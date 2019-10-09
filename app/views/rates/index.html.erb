@@ -14,7 +14,7 @@
       <tr>
         <td><%= rate.currency_1 %></td>
         <td><%= rate.currency_2 %></td>
-        <td><%= rate.rate %></td>
+        <td><%= '%.4f' % rate.rate %></td>
         <td><%= link_to 'Remove', { action: :destroy, id: rate.id }, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
