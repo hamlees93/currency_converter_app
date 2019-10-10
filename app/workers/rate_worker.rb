@@ -19,7 +19,6 @@ class RateWorker
     Rate.all.each {|pair|
       rate = rates[pair.currency_2] / rates[pair.currency_1]
       pair.update({rate: rate})
-      pair.save
     }
   end
 end
