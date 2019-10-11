@@ -5,6 +5,7 @@ class RatesController < ApplicationController
   def index
     @rates = Rate.all
     @rate = Rate.new
+    RatesHelper.rates_stale?(@rates[0])
   end
 
   # POST /
