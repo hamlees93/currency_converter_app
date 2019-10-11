@@ -31,9 +31,7 @@ The app itself contains two pages:
 
 `rails db:migrate`
 
-**7.** This app also utilises a gem called [sidekiq](https://github.com/mperham/sidekiq), which relies on Redis as a dependency
-
-    - If you do not have redis installed, either: `brew install redis` or [Follow these steps](https://redis.io/topics/quickstart)
+**7.** This app also utilises a gem called [sidekiq](https://github.com/mperham/sidekiq), which relies on Redis as a dependency. If you do not have redis installed, either: `brew install redis` or [Follow these steps](https://redis.io/topics/quickstart)
 
 **8.** In a new tab, start your redis server
 
