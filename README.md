@@ -31,38 +31,23 @@ The app itself contains two pages:
 
 `rails db:migrate`
 
-**7.** This App depends on an external services. To ensure functionality, head to [fixer](fixer.io.) and sign up for their API (you can use the free tier)
-
-**8.** Securely store your access key in the credentials file by running the following command in your shell, Replacing &lt;YOUR_FAV_EDITOR&gt; with your favourite editor:
-
-```bash
-EDITOR=<YOUR_FAV_EDITOR> bin/rails credentials:edit
-```
-
-**9.** Once your editor loads up, add in the following code, once again replacing &lt;YOUR_ACCESS_KEY&gt; with, you guessed it, your access key from [fixer](fixer.io.):
-
-```yml
-fixer:
-  access_key: <YOUR_ACCESS_KEY>
-```
-
-**10.** This app also utilises a gem called [sidekiq](https://github.com/mperham/sidekiq), which relies on Redis as a dependency
+**7.** This app also utilises a gem called [sidekiq](https://github.com/mperham/sidekiq), which relies on Redis as a dependency
 
     - If you do not have redis installed, either: `brew install redis` or [Follow these steps](https://redis.io/topics/quickstart)
 
-**11.** In a new tab, start your redis server
+**8.** In a new tab, start your redis server
 
 `redis-server`
 
-**12.** In a new tab, start sidekiq
+**9.** In a new tab, start sidekiq
 
 `sidekiq`
 
-**13.** In a new tab, start your rails server
+**10.** In a new tab, start your rails server
 
 `rails s`
 
-**14.** To run tests, ensure you are in the root directory of the app, then run:
+**11.** To run tests, ensure you are in the root directory of the app, then run:
 
 `rspec`
 
@@ -80,3 +65,22 @@ fixer:
   - **rate.rb** - Using redis to store the rates, the app is able to check this hash to see if the currency entered by the user is a valid one. If it is not, or if it is a repeatted pairing, an error message will be displayed to the user, and the pairing will not be saved
   - **rate_worker.rb** - Using **sidekiq**, this worker will go about it's request asynchronously, thus not impacting the loading time. The free tier of fixer did not allow the base rate to change, from EUR, on a request. So, when saving a rate, the EUR / currency_2 rate is divided by the EUR / currency_1 rate to get the current rate of the two pairs
 - **Tests** - Have been set up to test the basic functionality of the app
+
+### Additional Notes
+
+This app relies on the Fixer.io API. If you need to load your own key, follow the steps below:
+
+**1.** This App depends on an external services. To ensure functionality, head to [fixer](fixer.io.) and sign up for their API (you can use the free tier)
+
+**2.** Securely store your access key in the credentials file by running the following command in your shell, Replacing &lt;YOUR_FAV_EDITOR&gt; with your favourite editor:
+
+```bash
+EDITOR=<YOUR_FAV_EDITOR> bin/rails credentials:edit
+```
+
+**3.** Once your editor loads up, add in the following code, once again replacing &lt;YOUR_ACCESS_KEY&gt; with, you guessed it, your access key from [fixer](fixer.io.):
+
+```yml
+fixer:
+  access_key: <YOUR_ACCESS_KEY>
+```
