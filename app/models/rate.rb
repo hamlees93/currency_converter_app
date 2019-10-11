@@ -41,7 +41,7 @@ class Rate < ApplicationRecord
     rates = GetCurrentRateWorker.get_current_rates if rates.nil?
 
     if rates.has_key?(self.currency_1) and rates.has_key?(self.currency_2)
-      self.rate = '%.4f' % (rates[self.currency_2] / rates[self.currency_1])
+      self.rate = rates[self.currency_2] / rates[self.currency_1]
     else
       errors.add(:invalid, "Currency Code Provided") 
     end
