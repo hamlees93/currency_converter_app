@@ -64,6 +64,10 @@ The app itself contains two pages:
   - **rate_worker.rb** - Using **sidekiq**, this worker will go about it's request asynchronously, thus not impacting the loading time. The free tier of fixer did not allow the base rate to change, from EUR, on a request. So, when saving a rate, the EUR / currency_2 rate is divided by the EUR / currency_1 rate to get the current rate of the two pairs
 - **Tests** - Have been set up to test the basic functionality of the app
 
+### Takeaways
+
+- Not having the app deployed, made the scheduling aspect a little tricky. After finalising the solution I came up with, I came across a gem called [sidekiq-scheduler](https://github.com/moove-it/sidekiq-scheduler), which would have removed a lot of complexities
+
 ### Additional Notes
 
 This app relies on the Fixer.io API. If you need to load your own key, follow the steps below:
