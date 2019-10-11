@@ -29,6 +29,13 @@ gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.2', require: false
 
 group :development, :test do
+
+  ####### Currently a bug in rails 6, and version of rspec-rails, solved using the 4-0-dev branch ########
+  gem 'rspec-rails', git: 'https://github.com/rspec/rspec-rails', branch: '4-0-dev'
+
+  gem 'rails-controller-testing'
+
+
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
