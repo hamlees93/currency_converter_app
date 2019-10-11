@@ -16,6 +16,14 @@ class RateWorker
     rates = GetCurrentRateWorker.get_current_rates
     redis.set("rates", rates.to_json)
 
+    RateWorker.update_rates(rates)
+  end
+
+  def self.update_rates(rates)
+    if rates.nil?
+      rates = GetCurrentRateWorker.get_current_rates
+    end
+
     Rate.all.each {|pair|
       rate = rates[pair.currency_2] / rates[pair.currency_1]
       pair.update({rate: rate})
