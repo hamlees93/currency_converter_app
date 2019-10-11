@@ -36,7 +36,7 @@ class Rate < ApplicationRecord
   def get_current_rate
     redis = Redis.new(host: "localhost")
     
-    rates = JSON.parse(redis.get("rates"))
+    rates = JSON.parse(redis.get("rates")) unless redis.get("rates").nil?
     
     rates = GetCurrentRateWorker.get_current_rates if rates.nil?
 
