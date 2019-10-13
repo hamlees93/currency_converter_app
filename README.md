@@ -1,6 +1,6 @@
 # Currency Converter
 
-The currency converter app utilises the [fixer](fixer.io.) API to fetch and display currency data.
+The currency converter app utilises the [fixer](https://fixer.io) API to fetch and display currency data.
 
 The app itself contains two pages:
 
@@ -72,7 +72,7 @@ The app itself contains two pages:
 
 This app relies on the Fixer.io API. If you need to load your own key, follow the steps below:
 
-**1.** This App depends on an external services. To ensure functionality, head to [fixer](fixer.io.) and sign up for their API (you can use the free tier)
+**1.** This App depends on an external services. To ensure functionality, head to [fixer](https://fixer.io) and sign up for their API (you can use the free tier)
 
 **2.** Securely store your access key in the credentials file by running the following command in your shell, Replacing &lt;YOUR_FAV_EDITOR&gt; with your favourite editor:
 
@@ -80,7 +80,7 @@ This app relies on the Fixer.io API. If you need to load your own key, follow th
 EDITOR=<YOUR_FAV_EDITOR> bin/rails credentials:edit
 ```
 
-**3.** Once your editor loads up, add in the following code, once again replacing &lt;YOUR_ACCESS_KEY&gt; with, you guessed it, your access key from [fixer](fixer.io.):
+**3.** Once your editor loads up, add in the following code, once again replacing &lt;YOUR_ACCESS_KEY&gt; with, you guessed it, your access key from [fixer](https://fixer.io):
 
 ```yml
 fixer:
